@@ -3,582 +3,559 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CheckBioLink: Bio Link & Linktree Monitoring | Stop Losing Traffic</title>
-    <meta name="description" content="Never lose traffic to broken bio links again. CheckBioLink monitors Instagram, TikTok, Twitter & Linktree with multiple daily checks. Get instant alerts before followers notice.">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-5PYL9N2XNK');
-    </script>
+    <title>CheckBioLink - Never Miss a Sale From a Broken Link</title>
+    <meta name="description" content="Monitor your important links 24/7. Get instant alerts when your Linktree, shop, or booking page goes down.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --gray-900: #121212;
+            --gray-800: #1a1a1a;
+            --gray-700: #2a2a2a;
+            --gray-600: #3a3a3a;
+            --gray-400: #888888;
+            --gray-200: #d4d4d4;
+            --white: #ffffff;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --red: #ef4444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--gray-800);
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--gray-200);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--gray-600);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gray-400);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .highlight {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray-400);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-cta .btn {
+            font-size: 1.05rem;
+            padding: 1rem 2rem;
+        }
+
+        /* Platform Ticker */
+        .ticker-section {
+            padding: 3rem 0;
+            background: var(--gray-900);
+            border-top: 1px solid var(--gray-800);
+            border-bottom: 1px solid var(--gray-800);
+            overflow: hidden;
+        }
+
+        .ticker-label {
+            text-align: center;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-400);
+            margin-bottom: 2rem;
+        }
+
+        .ticker-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .ticker {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            width: max-content;
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            white-space: nowrap;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* How It Works */
+        .how-it-works {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gray-800);
+            border: 2px solid var(--gray-700);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            color: var(--gray-400);
+            line-height: 1.7;
+        }
+
+        .step-image {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            background: var(--gray-800);
+            border: 1px solid var(--gray-700);
+            border-radius: 8px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .step-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .step-image-placeholder {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* Pricing */
+        .pricing {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            background: var(--gray-900);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .price-card {
+            background: var(--gray-800);
+            border: 1px solid var(--gray-700);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .price-card:hover {
+            border-color: var(--gray-600);
+            transform: translateY(-4px);
+        }
+
+        .price-card.featured {
+            border-color: var(--accent);
+            position: relative;
+        }
+
+        .price-card.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .plan-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .price span {
+            font-size: 1.2rem;
+            color: var(--gray-400);
+            font-weight: 400;
+        }
+
+        .trial-note {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .features li {
+            padding: 0.7rem 0;
+            color: var(--gray-200);
+            font-size: 0.95rem;
+        }
+
+        .features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+            margin-right: 0.7rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--gray-800);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--gray-200);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-cta .btn {
+                width: 100%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .ticker-item {
+                padding: 0 2rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <a href="/" class="logo">CheckBioLink</a>
+        <div class="nav-links">
+            <a href="#pricing">Pricing</a>
+            <a href="https://checkbiolink-mvp.onrender.com" class="btn btn-primary">Sign In</a>
+        </div>
+    </nav>
 
-<div id="page" class="site">
-    <header class="site-header">
-        <nav id="navbar">
-            <div class="nav-container">
-                <a href="#" class="logo">
-                    <span class="logo-text">CheckBioLink</span>
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#early-access" class="nav-cta">Get Started</a></li>
-                </ul>
-                <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">
-                    <span class="hamburger"></span>
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <main id="main" class="site-main">
-
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-bg"></div>
-            <div class="hero-particles"></div>
-            <div class="container">
-                <div class="hero-content fade-in">
-                    <!-- <div class="hero-badge">🔗 Link Protection for Creators</div> -->
-                    <h1 class="hero-title">
-                        Never Lose Traffic From a 
-                        <span class="gradient-text">Broken Link</span> Again
-                    </h1>
-                    <p class="hero-subtitle">Your bio link is your money link. When it breaks, you lose sales, leads, and subscribers -- often without even knowing it. <strong>CheckBioLink</strong> monitors every link that matters to your business.</p>
-                    
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">Creators Protected</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Monitoring</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">&lt;2min</div>
-                            <div class="stat-label">Setup Time</div>
-                        </div>
-                    </div>
-
-                    <div class="cta-buttons">
-<a href="https://checkbiolink-mvp.onrender.com" class="btn btn-primary">
-    <span>Start Monitoring Free</span>
-    <span class="btn-shine"></span>
-</a>
-                        <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
-                    </div>
-
-                    <p class="hero-note">✓ 14-day free trial  •  ✓ No credit card required  •  ✓ Cancel anytime</p>
-                </div>
-
-                <!-- Alert Demo -->
-                <div class="alert-demo fade-in stagger-1">
-                    <div class="phone-mockup">
-                        <div class="phone-notch"></div>
-                        <div class="notification-card">
-                            <div class="notification-icon">⚠️</div>
-                            <div class="notification-content">
-                                <div class="notification-title">Link Down Alert</div>
-                                <div class="notification-message">Your Linktree is returning a 503 error</div>
-                                <div class="notification-time">2 minutes ago</div>
-                            </div>
-                            <div class="notification-pulse"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Problem Section -->
-        <section class="problem-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">One Broken Link Can <span class="gradient-text">Cost You Thousands</span></h2>
-                    <p class="section-subtitle">Your bio link is a single point of failure. When it breaks, your entire revenue stream stops.</p>
-                </div>
-
-                <div class="problem-grid">
-                    <div class="problem-card fade-in">
-                        <div class="problem-icon">💸</div>
-                        <h3>Silent Revenue Loss</h3>
-                        <p class="problem-stat">$1,800/mo</p>
-                        <p>A creator with 100 daily clicks, 2% conversion, and $30/sale loses <strong>$60 per day</strong> with a broken link. That adds up fast.</p>
-                    </div>
-
-                    <div class="problem-card fade-in stagger-1">
-                        <div class="problem-icon">😰</div>
-                        <h3>You Won't Know</h3>
-                        <p class="problem-stat">3-7 days</p>
-                        <p>Most creators don't discover broken links until <strong>days later</strong>—after domain renewals lapse, hosting goes down, or Linktree has an outage.</p>
-                    </div>
-
-                    <div class="problem-card fade-in stagger-2">
-                        <div class="problem-icon">📱</div>
-                        <h3>Total Traffic Loss</h3>
-                        <p class="problem-stat">100%</p>
-                        <p>On Instagram and TikTok, your bio link is the <strong>ONLY clickable link</strong>. When it breaks, all your traffic disappears instantly.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section id="features" class="features-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Protect <span class="gradient-text">Every Link</span> That Makes You Money</h2>
-                    <p class="section-subtitle">Monitor all your critical URLs from one dashboard. Stop checking manually.</p>
-                </div>
-
-                <div class="features-grid">
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">🔍</div>
-                        <h3>Multi-Link Monitoring</h3>
-                        <p>Track your Instagram bio link, Linktree, affiliate links, product pages, and booking links—all from one place.</p>
-                    </div>
-
-                    <div class="feature-card fade-in stagger-1">
-                        <div class="feature-icon">⚡</div>
-                        <h3>Rapid Check Frequency</h3>
-                        <p>We check links multiple times per day (up to 24x on Business plans). Catch issues in hours, not days.</p>
-                    </div>
-
-                    <div class="feature-card fade-in stagger-2">
-                        <div class="feature-icon">📧</div>
-                        <h3>Instant Alerts</h3>
-                        <p>Get immediate email notifications with error details. SMS alerts on Pro/Business plans. Fix problems before losing money.</p>
-                    </div>
-
-                    <div class="feature-card fade-in stagger-3">
-                        <div class="feature-icon">📊</div>
-                        <h3>Performance History</h3>
-                        <p>Track uptime patterns, identify recurring issues, and prove reliability to sponsors with detailed reports.</p>
-                    </div>
-
-                    <div class="feature-card fade-in stagger-4">
-                        <div class="feature-icon">🌐</div>
-                        <h3>Works With Everything</h3>
-                        <p>Instagram, TikTok, Twitter, YouTube, Linktree, Beacons, custom domains—monitor any URL that matters.</p>
-                    </div>
-
-                    <div class="feature-card fade-in stagger-5">
-                        <div class="feature-icon">⚙️</div>
-                        <h3>2-Minute Setup</h3>
-                        <p>No technical knowledge required. Add links, set preferences, done. Simple dashboard shows everything at a glance.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Use Cases Section -->
-        <section class="use-cases-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Built for <span class="gradient-text">Creators, Agencies & Businesses</span></h2>
-                </div>
-
-                <div class="use-cases-grid">
-                    <div class="use-case-card fade-in">
-                        <div class="use-case-header">
-                            <h3>Solo Plan</h3>
-                            <div class="use-case-badge">Starter</div>
-                        </div>
-                        <p class="use-case-for">Perfect for content creators monetizing through social media</p>
-                        <div class="use-case-features">
-                            <div class="use-case-feature">✓ Instagram bio link or Linktree</div>
-                            <div class="use-case-feature">✓ Top 2-3 affiliate links</div>
-                            <div class="use-case-feature">✓ Course or product pages</div>
-                        </br>
-                        </br>
-                        </div>
-                        <div class="use-case-price">
-                            <span class="price-amount">$7</span><span class="price-period">/month</span>
-                        </div>
-                        <p class="use-case-description">Monitor up to 3 critical links</p>
-                    </div>
-
-                    <div class="use-case-card featured fade-in stagger-1">
-                        <div class="popular-flag">MOST POPULAR</div>
-                        <div class="use-case-header">
-                            <h3>Pro Plan</h3>
-                            <div class="use-case-badge">Pro</div>
-                        </div>
-                        <p class="use-case-for">For multi-platform creators & small agencies</p>
-                        <div class="use-case-features">
-                            <div class="use-case-feature">✓ All social platform bio links</div>
-                            <div class="use-case-feature">✓ Multiple affiliate partnerships</div>
-                            <div class="use-case-feature">✓ Product pages & booking systems</div>
-                            <div class="use-case-feature">✓ Client websites</div>
-                        </br>
-                        </div>
-                        <div class="use-case-price">
-                            <span class="price-amount">$15</span><span class="price-period">/month</span>
-                        </div>
-                        <p class="use-case-description">Monitor up to 10 links with faster checks</p>
-                    </div>
-
-                    <div class="use-case-card fade-in stagger-2">
-                        <div class="use-case-header">
-                            <h3>Agency</h3>
-                            <div class="use-case-badge">Business</div>
-                        </div>
-                        <p class="use-case-for">For agencies managing multiple clients</p>
-                        <div class="use-case-features">
-                            <div class="use-case-feature">✓ All client bio links</div>
-                            <div class="use-case-feature">✓ Campaign landing pages</div>
-                            <div class="use-case-feature">✓ Affiliate networks</div>
-                            <div class="use-case-feature">✓ E-commerce pages</div>
-                            <div class="use-case-feature">✓ Team collaboration</div>
-                        </div>
-                        <div class="use-case-price">
-                            <span class="price-amount">$29</span><span class="price-period">/month</span>
-                        </div>
-                        <p class="use-case-description">Monitor up to 50 links with hourly checks</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- How It Works -->
-        <section id="how-it-works" class="how-it-works-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">How <span class="gradient-text">CheckBioLink</span> Works</h2>
-                    <p class="section-subtitle">Simple, automated link protection in three steps</p>
-                </br>
-                </div>
-
-                <div class="steps-grid">
-                    <div class="step-card fade-in">
-                        <div class="step-number">1</div>
-                        <h3>Add Your Links</h3>
-                        <p>Sign up and paste the URLs you want to monitor. Get set up in less than 2 minutes time.</p>
-                        <div class="step-visual">[Dashboard: Add Links]</div>
-                    </div>
-
-                    <div class="step-card fade-in stagger-1">
-                        <div class="step-number">2</div>
-                        <h3>We Monitor 24/7</h3>
-                        <p>Our system checks your links multiple times daily. We test for errors, timeouts, and redirect issues.</p>
-                        <div class="step-visual">[Status: Monitoring]</div>
-                    </div>
-
-                    <div class="step-card fade-in stagger-2">
-                        <div class="step-number">3</div>
-                        <h3>Get Instant Alerts</h3>
-                        <p>If any link goes down, you receive an immediate alert with error details so you can fix it fast.</p>
-                        <div class="step-visual">[Alert Email]</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pricing Section -->
-        <section id="pricing" class="pricing-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title"><span class="gradient-text">Simple, Transparent</span> Pricing</h2>
-                    <p class="section-subtitle">Start with a 14-day free trial. No credit card required.</p>
-                </div>
-
-                <div class="pricing-grid">
-                    <div class="pricing-card fade-in">
-                        <h3 class="plan-name">Starter</h3>
-                        <div class="plan-price">
-                            <span class="currency">$</span>
-                            <span class="amount">7</span>
-                            <span class="period">/mo</span>
-                        </div>
-                        <p class="plan-desc">Perfect for solo creators</p>
-                        <ul class="plan-features">
-                            <li><span class="check">✓</span> Monitor up to 3 links</li>
-                            <li><span class="check">✓</span> 6x daily checks</li>
-                            <li><span class="check">✓</span> Email alerts</li>
-                            <li><span class="check">✓</span> Basic dashboard</li>
-                            <li><span class="check">✓</span> 30-day history</li>
-                        </br>
-                        </br>
-                        </ul>
-                        <a href="#early-access" class="plan-btn">Start Free Trial</a>
-                    </div>
-
-                    <div class="pricing-card featured fade-in stagger-1">
-                        <div class="featured-badge">MOST POPULAR</div>
-                        <h3 class="plan-name">Pro</h3>
-                        <div class="plan-price">
-                            <span class="currency">$</span>
-                            <span class="amount">15</span>
-                            <span class="period">/mo</span>
-                        </div>
-                        <p class="plan-desc">For serious creators</p>
-                        <ul class="plan-features">
-                            <li><span class="check">✓</span> Monitor up to 10 links</li>
-                            <li><span class="check">✓</span> 12x daily checks</li>
-                            <li><span class="check">✓</span> Email + SMS alerts</li>
-                            <li><span class="check">✓</span> Advanced dashboard</li>
-                            <li><span class="check">✓</span> 90-day history</li>
-                            <li><span class="check">✓</span> Priority support</li>
-                        </br>
-                        </ul>
-                        <a href="#early-access" class="plan-btn">Start Free Trial</a>
-                    </div>
-
-                    <div class="pricing-card fade-in stagger-2">
-                        <h3 class="plan-name">Business</h3>
-                        <div class="plan-price">
-                            <span class="currency">$</span>
-                            <span class="amount">29</span>
-                            <span class="period">/mo</span>
-                        </div>
-                        <p class="plan-desc">For agencies</p>
-                        <ul class="plan-features">
-                            <li><span class="check">✓</span> Monitor up to 50 links</li>
-                            <li><span class="check">✓</span> 24x daily checks</li>
-                            <li><span class="check">✓</span> Email + SMS + Webhooks</li>
-                            <li><span class="check">✓</span> Full analytics</li>
-                            <li><span class="check">✓</span> Unlimited history</li>
-                            <li><span class="check">✓</span> Team access (3 users)</li>
-                            <li><span class="check">✓</span> Priority support</li>
-                        </ul>
-                        <a href="#early-access" class="plan-btn">Start Free Trial</a>
-                    </div>
-                </div>
-
-                <div class="pricing-note">
-                    🎉 <strong>Early Access Special:</strong> Sign up now and get 50% off your first 3 months
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section id="faq" class="faq-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
-                </div>
-
-                <div class="faq-grid">
-                    <div class="faq-item" data-accordion-item>
-                        <h3 class="faq-question">How often do you check my links?</h3>
-                        <div class="faq-answer">
-                            <p>Check frequency depends on your plan: Starter checks every 4 hours (6x daily), Pro checks every 2 hours (12x daily), and Business checks every hour (24x daily).</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-accordion-item>
-                        <h3 class="faq-question">What happens when my link is down?</h3>
-                        <div class="faq-answer">
-                            <p>You'll receive an immediate alert via email (or SMS on Pro/Business plans) with specific details about the error, when it was detected, and which link is affected.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-accordion-item>
-                        <h3 class="faq-question">Why should I monitor my bio link?</h3>
-                        <div class="faq-answer">
-                            <p>Your bio link is often the only clickable link on platforms like Instagram and TikTok. When it breaks, you lose 100% of your traffic. Many creators don't realize their link is down until days later, costing hundreds or thousands in lost revenue.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-accordion-item>
-                        <h3 class="faq-question">What causes links to break?</h3>
-                        <div class="faq-answer">
-                            <p>Links break for many reasons: domain renewals lapse, hosting services have outages, link shorteners experience downtime, redirects get misconfigured, or SSL certificates expire. Even major platforms like Linktree occasionally have outages.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-accordion-item>
-                        <h3 class="faq-question">What types of links can I monitor?</h3>
-                        <div class="faq-answer">
-                            <p>You can monitor any URL: direct social media bio links, Linktree/Beacons pages, affiliate links, course pages, booking systems, lead magnets, custom domains, or any other link critical to your business.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-accordion-item>
-                        <h3 class="faq-question">Which platforms do you support?</h3>
-                        <div class="faq-answer">
-                            <p>We support links from any platform including Instagram, TikTok, Twitter/X, YouTube, LinkedIn, Facebook, and any other social network. We also monitor all major link-in-bio tools like Linktree, Beacons, and Tap Bio.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-accordion-item>
-                        <h3 class="faq-question">How is this different from checking myself?</h3>
-                        <div class="faq-answer">
-                            <p>Manual checking is inconsistent, time-consuming, and easy to forget. Most creators only discover problems when followers report it or they randomly check days later. Automatic monitoring gives you peace of mind and immediate alerts 24/7.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-accordion-item>
-                        <h3 class="faq-question">Can I upgrade or downgrade my plan?</h3>
-                        <div class="faq-answer">
-                            <p>Yes! You can upgrade or downgrade at any time. When you upgrade, you'll be charged the prorated difference. When you downgrade, your new rate starts at the next billing cycle.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final CTA Section -->
-        <section id="early-access" class="final-cta-section">
-            <div class="cta-glow"></div>
-            <div class="container">
-                <h2 class="cta-title">Stop Losing Money to <span class="gradient-text">Broken Links</span></h2>
-                <p class="cta-subtitle">Join hundreds of creators and agencies who protect their income with CheckBioLink</p>
-
-                        <a href="https://checkbiolink-mvp.onrender.com" class="btn btn-primary">
-                            <span>Start Free 14-Day Trial</span>
-                            </a>
-                            <span class="btn-shine"></span>
-                      
-                    <p class="cta-subtitle">No credit card required • Setup takes less than 2 minutes</p>
-                </div>
-
-                <div class="trust-badges">
-                    <div class="trust-badge">
-                        <span class="trust-icon">🔒</span>
-                        <span>Secure & encrypted</span>
-                    </div>
-                    <div class="trust-badge">
-                        <span class="trust-icon">💳</span>
-                        <span>No credit card needed</span>
-                    </div>
-                    <div class="trust-badge">
-                        <span class="trust-icon">⚡</span>
-                        <span>Instant setup</span>
-                    </div>
-                    <div class="trust-badge">
-                        <span class="trust-icon">❌</span>
-                        <span>Cancel anytime</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Power Banner -->
-    <section class="power-banner">
-        <div class="container">
-            <span class="power-text"><strong>CheckBioLink</strong>: Protect Your Assets!</span>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Never Miss a Sale From a <span class="highlight">Broken Link</span></h1>
+        <p>Monitor your bio links, shop, and booking pages 24/7. Get instant alerts when something goes down—before you lose customers.</p>
+        <div class="hero-cta">
+            <a href="https://checkbiolink-mvp.onrender.com" class="btn btn-primary">Start Free Trial</a>
+            <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
         </div>
     </section>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo-text">CheckBioLink</div>
-                    <p>Protect every link that makes you money.</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Product</h4>
-                        <a href="#features">Features</a>
-                        <a href="#pricing">Pricing</a>
-                        <a href="#how-it-works">How It Works</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Company</h4>
-                        <a href="#">About</a>
-                        <a href="<a href="mailto:mail@checkbiolink.com">Contact</a>
-                        <a href="#">Privacy</a>
-                        <a href="#">Terms</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 CheckBioLink. All rights reserved. • Built by <a href="https://violetrend.com" target="_blank">VioleTrend</a></p>
+    <!-- Platform Ticker -->
+    <section class="ticker-section">
+        <div class="ticker-label">Works with all your platforms</div>
+        <div class="ticker-wrapper">
+            <div class="ticker">
+                <!-- First set -->
+                <div class="ticker-item">Linktree</div>
+                <div class="ticker-item">Shopify</div>
+                <div class="ticker-item">Etsy</div>
+                <div class="ticker-item">Beacons</div>
+                <div class="ticker-item">Instagram</div>
+                <div class="ticker-item">WooCommerce</div>
+                <div class="ticker-item">Calendly</div>
+                <div class="ticker-item">Gumroad</div>
+                <div class="ticker-item">Squarespace</div>
+                <div class="ticker-item">WordPress</div>
+                <div class="ticker-item">TikTok</div>
+                <div class="ticker-item">YouTube</div>
+                <!-- Duplicate set for infinite scroll -->
+                <div class="ticker-item">Linktree</div>
+                <div class="ticker-item">Shopify</div>
+                <div class="ticker-item">Etsy</div>
+                <div class="ticker-item">Beacons</div>
+                <div class="ticker-item">Instagram</div>
+                <div class="ticker-item">WooCommerce</div>
+                <div class="ticker-item">Calendly</div>
+                <div class="ticker-item">Gumroad</div>
+                <div class="ticker-item">Squarespace</div>
+                <div class="ticker-item">WordPress</div>
+                <div class="ticker-item">TikTok</div>
+                <div class="ticker-item">YouTube</div>
             </div>
         </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-image">
+                    <!-- Replace src with your screenshot: dashboard with "Add Link" modal open -->
+                    <img src="screenshots/step-1-add-links.png" alt="Add links dashboard" style="display: none;">
+                    <div class="step-image-placeholder">📸 Screenshot: Dashboard "Add Link" modal</div>
+                </div>
+                <h3>Add Your Links</h3>
+                <p>Paste the URLs you want to monitor. Set up takes less than 2 minutes. Start with your most critical links.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-image">
+                    <!-- Replace src with your screenshot: dashboard showing links with green "Online" status -->
+                    <img src="screenshots/step-2-monitoring.png" alt="Links being monitored" style="display: none;">
+                    <div class="step-image-placeholder">📸 Screenshot: Links with "Online" status</div>
+                </div>
+                <h3>We Monitor 24/7</h3>
+                <p>Our system checks your links multiple times daily. We test for errors, timeouts, broken pages, and redirect issues.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-image">
+                    <!-- Replace src with your screenshot: email alert notification -->
+                    <img src="screenshots/step-3-alert.png" alt="Alert email" style="display: none;">
+                    <div class="step-image-placeholder">📸 Screenshot: Email alert</div>
+                </div>
+                <h3>Get Instant Alerts</h3>
+                <p>If any link goes down, you receive an immediate email alert with error details so you can fix it fast.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <h2 class="section-title">Simple, Transparent Pricing</h2>
+        <div class="pricing-grid">
+            <!-- Starter -->
+            <div class="price-card">
+                <div class="plan-name">Starter</div>
+                <div class="price">$7<span>/mo</span></div>
+                <div class="trial-note">14-day free trial</div>
+                <ul class="features">
+                    <li>3 links monitored</li>
+                    <li>Check every 4 hours</li>
+                    <li>Email alerts</li>
+                    <li>30-day history</li>
+                </ul>
+                <a href="https://buy.stripe.com/dRmaEYbaB6Cxextdh8gfu00" class="btn btn-secondary" style="width: 100%;">Start Trial</a>
+            </div>
+
+            <!-- Pro -->
+            <div class="price-card featured">
+                <div class="plan-name">Pro</div>
+                <div class="price">$15<span>/mo</span></div>
+                <div class="trial-note">14-day free trial</div>
+                <ul class="features">
+                    <li>10 links monitored</li>
+                    <li>Check every 2 hours</li>
+                    <li>Email alerts</li>
+                    <li>90-day history</li>
+                </ul>
+                <a href="https://buy.stripe.com/14A5kE6Ul9OJahdgtkgfu01" class="btn btn-primary" style="width: 100%;">Start Trial</a>
+            </div>
+
+            <!-- Agency -->
+            <div class="price-card">
+                <div class="plan-name">Agency</div>
+                <div class="price">$29<span>/mo</span></div>
+                <div class="trial-note">14-day free trial</div>
+                <ul class="features">
+                    <li>50 links monitored</li>
+                    <li>Check every hour</li>
+                    <li>Email alerts</li>
+                    <li>1-year history</li>
+                </ul>
+                <a href="https://buy.stripe.com/4gM00k5Qh7GB4WTfpggfu02" class="btn btn-secondary" style="width: 100%;">Start Trial</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with care by <a href="https://dahvio.com">Dahvio Studios</a></p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">© 2026 CheckBioLink. All rights reserved.</p>
     </footer>
-</div>
-
-<script>
-// Mobile Menu Toggle
-const mobileMenu = document.getElementById('mobileMenu');
-const navLinks = document.querySelector('.nav-links');
-
-mobileMenu.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
-
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            navLinks.classList.remove('active');
-            mobileMenu.classList.remove('active');
-        }
-    });
-});
-
-// FAQ Accordion
-document.querySelectorAll('[data-accordion-item]').forEach(item => {
-    const question = item.querySelector('.faq-question');
-    const answer = item.querySelector('.faq-answer');
-
-    question.addEventListener('click', () => {
-        const isOpen = answer.style.maxHeight;
-        
-        // Close all
-        document.querySelectorAll('.faq-answer').forEach(a => {
-            a.style.maxHeight = null;
-        });
-        document.querySelectorAll('.faq-question').forEach(q => {
-            q.classList.remove('active');
-        });
-
-        // Open clicked
-        if (!isOpen) {
-            answer.style.maxHeight = answer.scrollHeight + 'px';
-            question.classList.add('active');
-        }
-    });
-});
-
-// Fade-in on scroll
-const fadeElements = document.querySelectorAll('.fade-in');
-const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-        }
-    });
-}, { threshold: 0.1 });
-
-fadeElements.forEach(el => fadeObserver.observe(el));
-
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-</script>
-
 </body>
-
 </html>
-
-
-
-
-
-
-
-
