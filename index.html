@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CheckBioLink - Never Miss a Sale From a Broken Link</title>
     <meta name="description" content="Monitor your important links 24/7. Get instant alerts when your Linktree, shop, or booking page goes down.">
+    <link rel="icon" type="image/png" href="CheckBioLink-logo.png">
+    <link rel="apple-touch-icon" href="CheckBioLink-logo.png">
     
     <style>
         * {
@@ -50,10 +52,20 @@
         }
 
         .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--white);
             text-decoration: none;
+        }
+
+        .logo img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            border-radius: 6px;
         }
 
         .nav-links {
@@ -242,8 +254,8 @@
         .step-image {
             width: 100%;
             max-width: 400px;
-            height: 250px;
-            background: var(--gray-800);
+            aspect-ratio: 4 / 3;
+            background: var(--gray-900);
             border: 1px solid var(--gray-700);
             border-radius: 8px;
             margin: 0 auto 1.5rem;
@@ -251,20 +263,15 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            padding: 0.65rem;
         }
 
         .step-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
         }
 
-        .step-image-placeholder {
-            color: var(--gray-600);
-            font-size: 0.9rem;
-            text-align: center;
-            padding: 1rem;
-        }
 
         /* Pricing */
         .pricing {
@@ -355,7 +362,7 @@
         }
 
         .features li::before {
-            content: '✓';
+            content: 'âœ“';
             color: var(--accent);
             font-weight: 700;
             margin-right: 0.7rem;
@@ -384,6 +391,10 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .step-image {
+                max-width: 340px;
+                aspect-ratio: 4 / 5;
+            }
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -415,7 +426,7 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <a href="/" class="logo">CheckBioLink</a>
+        <a href="/" class="logo"><img src="CheckBioLink-logo.png" alt="CheckBioLink logo"><span>CheckBioLink</span></a>
         <div class="nav-links">
             <a href="#pricing">Pricing</a>
             <a href="https://checkbiolink-mvp.onrender.com" class="btn btn-primary">Sign In</a>
@@ -425,7 +436,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <h1>Never Miss a Sale From a <span class="highlight">Broken Link</span></h1>
-        <p>Monitor your bio links, shop, and booking pages 24/7. Get instant alerts when something goes down—before you lose customers.</p>
+        <p>Monitor your bio links, shop, and booking pages 24/7. Get instant alerts when something goes downâ€”before you lose customers.</p>
         <div class="hero-cta">
             <a href="https://checkbiolink-mvp.onrender.com" class="btn btn-primary">Start Free Trial</a>
             <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
@@ -473,31 +484,19 @@
         <div class="steps">
             <div class="step">
                 <div class="step-number">1</div>
-                <div class="step-image">
-                    <!-- Replace src with your screenshot: dashboard with "Add Link" modal open -->
-                    <img src="screenshots/step-1-add-links.jpg" alt="Add links dashboard" style="display: none;">
-                    <div class="step-image-placeholder">📸 Screenshot: Dashboard "Add Link" modal</div>
-                </div>
+                <div class="step-image"><img src="screenshots/step-1-add-links.jpg" alt="Dashboard showing Add Link modal"></div>
                 <h3>Add Your Links</h3>
                 <p>Paste the URLs you want to monitor. Set up takes less than 2 minutes. Start with your most critical links.</p>
             </div>
             <div class="step">
                 <div class="step-number">2</div>
-                <div class="step-image">
-                    <!-- Replace src with your screenshot: dashboard showing links with green "Online" status -->
-                    <img src="screenshots/step-2-monitoring.jpg" alt="Links being monitored" style="display: none;">
-                    <div class="step-image-placeholder">📸 Screenshot: Links with "Online" status</div>
-                </div>
+                <div class="step-image"><img src="screenshots/step-2-monitoring.jpg" alt="Dashboard showing monitored links online"></div>
                 <h3>We Monitor 24/7</h3>
                 <p>Our system checks your links multiple times daily. We test for errors, timeouts, broken pages, and redirect issues.</p>
             </div>
             <div class="step">
                 <div class="step-number">3</div>
-                <div class="step-image">
-                    <!-- Replace src with your screenshot: email alert notification -->
-                    <img src="screenshots/step-3-alert.jpg" alt="Alert email" style="display: none;">
-                    <div class="step-image-placeholder">📸 Screenshot: Email alert</div>
-                </div>
+                <div class="step-image"><img src="screenshots/step-3-alert.jpg" alt="Email alert for a broken link"></div>
                 <h3>Get Instant Alerts</h3>
                 <p>If any link goes down, you receive an immediate email alert with error details so you can fix it fast.</p>
             </div>
@@ -555,7 +554,8 @@
     <!-- Footer -->
     <footer>
         <p>Made with care by <a href="https://dahvio.com">Dahvio Studios</a></p>
-        <p style="margin-top: 0.5rem; font-size: 0.85rem;">© 2026 CheckBioLink. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Â© 2026 CheckBioLink. All rights reserved.</p>
     </footer>
 </body>
 </html>
+
