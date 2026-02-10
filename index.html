@@ -7,6 +7,14 @@
     <meta name="description" content="Monitor your important links 24/7. Get instant alerts when your Linktree, shop, or booking page goes down.">
     <link rel="icon" type="image/png" href="CheckBioLink-logo.png">
     <link rel="apple-touch-icon" href="CheckBioLink-logo.png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RNMYFMH2Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-8RNMYFMH2Y');
+    </script>
     
     <style>
         * {
@@ -438,7 +446,7 @@
         <h1>Never Miss a Sale From a <span class="highlight">Broken Link</span></h1>
         <p>Monitor your bio links, shop, and booking pages 24/7. Get instant alerts when something goes down—before you lose customers.</p>
         <div class="hero-cta">
-            <a href="https://checkbiolink-mvp.onrender.com" class="btn btn-primary">Start Free Trial</a>
+            <a href="https://checkbiolink-mvp.onrender.com" class="btn btn-primary" onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'Hero Sign Up'})">Start Free Trial</a>
             <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
         </div>
     </section>
