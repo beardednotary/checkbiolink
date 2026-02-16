@@ -727,7 +727,7 @@
             btn.textContent = 'Checking...';
             
             try {
-                const response = await fetch('/api/check-link-now', {
+                const response = await fetch('https://app.checkbiolink.com/api/check-link-now', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ url })
