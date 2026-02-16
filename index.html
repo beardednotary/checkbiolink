@@ -12,7 +12,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-8RNMYFMH2Y');
     </script>
     
@@ -35,6 +34,7 @@
             --accent: #3b82f6;
             --accent-hover: #2563eb;
             --red: #ef4444;
+            --green: #22c55e;
         }
 
         body {
@@ -45,7 +45,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Navigation */
         nav {
             padding: 1.5rem 2rem;
             display: flex;
@@ -125,11 +124,10 @@
             border-color: var(--gray-400);
         }
 
-        /* Hero Section */
         .hero {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 6rem 2rem;
+            padding: 6rem 2rem 3rem;
             text-align: center;
         }
 
@@ -164,7 +162,147 @@
             padding: 1rem 2rem;
         }
 
-        /* Platform Ticker */
+        /* FREE LINK CHECKER SECTION */
+        .link-checker {
+            max-width: 700px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .checker-card {
+            background: var(--gray-800);
+            border: 1px solid var(--gray-700);
+            border-radius: 12px;
+            padding: 2.5rem;
+        }
+
+        .checker-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .checker-card p {
+            color: var(--gray-400);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .checker-form {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checker-input {
+            flex: 1;
+            padding: 0.875rem 1rem;
+            background: var(--gray-900);
+            border: 1px solid var(--gray-700);
+            border-radius: 6px;
+            color: var(--white);
+            font-size: 0.95rem;
+        }
+
+        .checker-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .checker-input::placeholder {
+            color: var(--gray-600);
+        }
+
+        .btn-check {
+            padding: 0.875rem 2rem;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-check:hover:not(:disabled) {
+            background: var(--accent-hover);
+        }
+
+        .btn-check:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .checker-result {
+            display: none;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .checker-result.show {
+            display: block;
+        }
+
+        .result-up {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .result-down {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .result-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .result-up .result-title {
+            color: var(--green);
+        }
+
+        .result-down .result-title {
+            color: var(--red);
+        }
+
+        .result-details {
+            font-size: 0.9rem;
+            color: var(--gray-300);
+            line-height: 1.6;
+        }
+
+        .result-details div {
+            margin-bottom: 0.5rem;
+        }
+
+        .checker-cta {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--gray-900);
+            border-radius: 8px;
+            display: none;
+        }
+
+        .checker-cta.show {
+            display: block;
+        }
+
+        .checker-cta h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .checker-cta p {
+            color: var(--gray-400);
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* TICKER */
         .ticker-section {
             padding: 3rem 0;
             background: var(--gray-900);
@@ -210,7 +348,6 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* How It Works */
         .how-it-works {
             max-width: 1200px;
             margin: 0 auto;
@@ -280,8 +417,6 @@
             object-fit: contain;
         }
 
-
-        /* Pricing */
         .pricing {
             max-width: 1200px;
             margin: 0 auto;
@@ -376,7 +511,6 @@
             margin-right: 0.7rem;
         }
 
-        /* Footer */
         footer {
             border-top: 1px solid var(--gray-800);
             padding: 3rem 2rem;
@@ -397,18 +531,9 @@
             color: var(--white);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .step-image {
-                max-width: 340px;
-                aspect-ratio: 4 / 5;
-            }
             .hero h1 {
                 font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
             }
 
             .hero-cta {
@@ -420,19 +545,21 @@
                 width: 100%;
             }
 
-            .nav-links {
-                display: none;
+            .checker-form {
+                flex-direction: column;
             }
 
-            .ticker-item {
-                padding: 0 2rem;
-                font-size: 1rem;
+            .btn-check {
+                width: 100%;
+            }
+
+            .nav-links {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <a href="/" class="logo"><img src="CheckBioLink-logo.png" alt="CheckBioLink logo"><span>CheckBioLink</span></a>
         <div class="nav-links">
@@ -441,7 +568,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Never Miss a Sale From a <span class="highlight">Broken Link</span></h1>
         <p>Monitor your bio links, shop, and booking pages 24/7. Get instant alerts when something goes down—before you lose customers.</p>
@@ -451,12 +577,37 @@
         </div>
     </section>
 
-    <!-- Platform Ticker -->
+    <!-- FREE LINK CHECKER -->
+    <section class="link-checker">
+        <div class="checker-card">
+            <h2>Test Your Link Right Now</h2>
+            <p>Check if your link is working. No signup required.</p>
+            
+            <form class="checker-form" id="checkerForm" onsubmit="checkLink(event)">
+                <input 
+                    type="url" 
+                    class="checker-input" 
+                    id="linkInput" 
+                    placeholder="https://your-shop.etsy.com"
+                    required
+                >
+                <button type="submit" class="btn-check" id="checkBtn">Check Link</button>
+            </form>
+
+            <div class="checker-result" id="checkerResult"></div>
+            
+            <div class="checker-cta" id="checkerCTA">
+                <h3>Want 24/7 Monitoring?</h3>
+                <p>This link is working now, but what about at 2am when you're asleep? We'll monitor it around the clock and alert you instantly if it goes down.</p>
+                <a href="https://checkbiolink-mvp.onrender.com" class="btn btn-primary">Start Free Trial</a>
+            </div>
+        </div>
+    </section>
+
     <section class="ticker-section">
         <div class="ticker-label">Works with all your platforms</div>
         <div class="ticker-wrapper">
             <div class="ticker">
-                <!-- First set -->
                 <div class="ticker-item">Linktree</div>
                 <div class="ticker-item">Shopify</div>
                 <div class="ticker-item">Etsy</div>
@@ -469,7 +620,6 @@
                 <div class="ticker-item">WordPress</div>
                 <div class="ticker-item">TikTok</div>
                 <div class="ticker-item">YouTube</div>
-                <!-- Duplicate set for infinite scroll -->
                 <div class="ticker-item">Linktree</div>
                 <div class="ticker-item">Shopify</div>
                 <div class="ticker-item">Etsy</div>
@@ -486,7 +636,6 @@
         </div>
     </section>
 
-    <!-- How It Works -->
     <section class="how-it-works" id="how-it-works">
         <h2 class="section-title">How It Works</h2>
         <div class="steps">
@@ -511,61 +660,124 @@
         </div>
     </section>
 
-    <!-- Pricing -->
     <section class="pricing" id="pricing">
         <h2 class="section-title">Simple, Transparent Pricing</h2>
         <div class="pricing-grid">
-            <!-- Starter -->
             <div class="price-card">
                 <div class="plan-name">Starter</div>
                 <div class="price">$7<span>/mo</span></div>
                 <div class="trial-note">14-day free trial</div>
                 <ul class="features">
                     <li>3 links monitored</li>
-                    <li>Check every 4 hours = 6 checks/day</li>
+                    <li>Check every 4 hours</li>
                     <li>Email alerts</li>
                     <li>30-day history</li>
                 </ul>
                 <a href="https://buy.stripe.com/dRmaEYbaB6Cxextdh8gfu00" class="btn btn-secondary" style="width: 100%;">Start Trial</a>
             </div>
 
-            <!-- Pro -->
             <div class="price-card featured">
                 <div class="plan-name">Pro</div>
                 <div class="price">$15<span>/mo</span></div>
                 <div class="trial-note">14-day free trial</div>
                 <ul class="features">
                     <li>10 links monitored</li>
-                    <li>Check every 2 hours = 12 checks/day</li>
+                    <li>Check every 2 hours</li>
                     <li>Email alerts</li>
                     <li>90-day history</li>
                 </ul>
                 <a href="https://buy.stripe.com/14A5kE6Ul9OJahdgtkgfu01" class="btn btn-primary" style="width: 100%;">Start Trial</a>
             </div>
 
-            <!-- Agency -->
             <div class="price-card">
                 <div class="plan-name">Agency</div>
                 <div class="price">$29<span>/mo</span></div>
                 <div class="trial-note">14-day free trial</div>
                 <ul class="features">
                     <li>50 links monitored</li>
-                    <li>Check every hour = 24 checks/day</li>
+                    <li>Check every hour</li>
                     <li>Email alerts</li>
                     <li>1-year history</li>
                 </ul>
                 <a href="https://buy.stripe.com/4gM00k5Qh7GB4WTfpggfu02" class="btn btn-secondary" style="width: 100%;">Start Trial</a>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="https://www.producthunt.com/products/checkbiolink?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-checkbiolink" target="_blank" rel="noopener noreferrer"><img alt="CheckBioLink - Never lose sales from a broken link again | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1078228&amp;theme=dark&amp;t=1770882815761"></a>
-        </div>
+
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>Made with care by <a href="https://dahvio.com">Dahvio Studios</a></p>
         <p style="margin-top: 0.5rem; font-size: 0.85rem;">© 2026 CheckBioLink. All rights reserved.</p>
     </footer>
+
+    <script>
+        async function checkLink(event) {
+            event.preventDefault();
+            
+            const btn = document.getElementById('checkBtn');
+            const input = document.getElementById('linkInput');
+            const result = document.getElementById('checkerResult');
+            const cta = document.getElementById('checkerCTA');
+            const url = input.value.trim();
+            
+            // Reset
+            result.classList.remove('show');
+            cta.classList.remove('show');
+            btn.disabled = true;
+            btn.textContent = 'Checking...';
+            
+            try {
+                const response = await fetch('/api/check-link-now', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url })
+                });
+                
+                const data = await response.json();
+                
+                if (data.is_up) {
+                    result.className = 'checker-result result-up show';
+                    result.innerHTML = `
+                        <div class="result-title">✓ Your link is working!</div>
+                        <div class="result-details">
+                            <div><strong>Status:</strong> Online</div>
+                            <div><strong>Response Time:</strong> ${(data.response_time * 1000).toFixed(0)}ms</div>
+                            ${data.status_code ? `<div><strong>Status Code:</strong> ${data.status_code}</div>` : ''}
+                        </div>
+                    `;
+                } else {
+                    result.className = 'checker-result result-down show';
+                    result.innerHTML = `
+                        <div class="result-title">✗ Your link appears to be down</div>
+                        <div class="result-details">
+                            <div><strong>Error:</strong> ${data.error_message || 'Connection failed'}</div>
+                            ${data.status_code ? `<div><strong>Status Code:</strong> ${data.status_code}</div>` : ''}
+                            <div style="margin-top: 1rem;">This could mean your site is temporarily unavailable or there's a configuration issue.</div>
+                        </div>
+                    `;
+                }
+                
+                cta.classList.add('show');
+                
+                // Track in GA
+                gtag('event', 'link_check', {
+                    'event_category': 'Free Tool',
+                    'event_label': data.is_up ? 'Link Up' : 'Link Down'
+                });
+                
+            } catch (error) {
+                result.className = 'checker-result result-down show';
+                result.innerHTML = `
+                    <div class="result-title">Error checking link</div>
+                    <div class="result-details">
+                        <div>Unable to check your link. Please try again.</div>
+                    </div>
+                `;
+            }
+            
+            btn.disabled = false;
+            btn.textContent = 'Check Link';
+        }
+    </script>
 </body>
 </html>
