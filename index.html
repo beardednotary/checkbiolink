@@ -564,7 +564,7 @@
         <a href="/" class="logo"><img src="CheckBioLink-logo.png" alt="CheckBioLink logo"><span>CheckBioLink</span></a>
         <div class="nav-links">
             <a href="#pricing">Pricing</a>
-            <a href="https://checkbiolink-mvp.onrender.com" class="btn btn-primary">Sign In</a>
+            <a href="https://app.checkbiolink.com" class="btn btn-primary">Sign In</a>
         </div>
     </nav>
 
@@ -572,7 +572,7 @@
         <h1>Never Miss a Sale From a <span class="highlight">Broken Link</span></h1>
         <p>Monitor your bio links, shop, and booking pages 24/7. Get instant alerts when something goes down—before you lose customers.</p>
         <div class="hero-cta">
-            <a href="https://checkbiolink-mvp.onrender.com" class="btn btn-primary" onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'Hero Sign Up'})">Start Free Trial</a>
+            <a href="https://app.checkbiolink.com" class="btn btn-primary" onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'Hero Sign Up'})">Start Free Trial</a>
             <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
         </div>
     </section>
@@ -743,7 +743,7 @@
             btn.textContent = 'Checking...';
             
             try {
-                const response = await fetch('/api/check-link-now', {
+                const response = await fetch('https://app.checkbiolink.com/api/check-link-now', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ url })
@@ -797,3 +797,4 @@
     </script>
 </body>
 </html>
+
