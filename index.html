@@ -564,7 +564,7 @@
         <a href="/" class="logo"><img src="CheckBioLink-logo.png" alt="CheckBioLink logo"><span>CheckBioLink</span></a>
         <div class="nav-links">
             <a href="#pricing">Pricing</a>
-            <a href="https://app.checkbiolink.com" class="btn btn-primary">Sign In</a>
+            <a href="https://checkbiolink-mvp.onrender.com" class="btn btn-primary">Sign In</a>
         </div>
     </nav>
 
@@ -572,7 +572,7 @@
         <h1>Never Miss a Sale From a <span class="highlight">Broken Link</span></h1>
         <p>Monitor your bio links, shop, and booking pages 24/7. Get instant alerts when something goes down—before you lose customers.</p>
         <div class="hero-cta">
-            <a href="https://app.checkbiolink.com" class="btn btn-primary" onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'Hero Sign Up'})">Start Free Trial</a>
+            <a href="https://checkbiolink-mvp.onrender.com" class="btn btn-primary" onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'Hero Sign Up'})">Start Free Trial</a>
             <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
         </div>
     </section>
@@ -580,8 +580,23 @@
     <!-- FREE LINK CHECKER -->
     <section class="link-checker">
         <div class="checker-card">
-            <h2>Test Your Link Right Now</h2>
-            <p>Check if your link is working. No signup required.</p>
+            <h2>Free Broken Link Checker</h2>
+            <p>Is your Etsy shop, Linktree, or bio link actually working? Test any link instantly to see if your customers can reach you. No signup required.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; padding: 1.5rem; background: var(--gray-900); border-radius: 8px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 0.25rem;">Instant</div>
+                    <div style="font-size: 0.85rem; color: var(--gray-400);">Results in seconds</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 0.25rem;">Free</div>
+                    <div style="font-size: 0.85rem; color: var(--gray-400);">No account needed</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 0.25rem;">Accurate</div>
+                    <div style="font-size: 0.85rem; color: var(--gray-400);">Real status checks</div>
+                </div>
+            </div>
             
             <form class="checker-form" id="checkerForm" onsubmit="checkLink(event)">
                 <input 
@@ -597,9 +612,10 @@
             <div class="checker-result" id="checkerResult"></div>
             
             <div class="checker-cta" id="checkerCTA">
-                <h3>Want 24/7 Monitoring?</h3>
-                <p>This link is working now, but what about at 2am when you're asleep? We'll monitor it around the clock and alert you instantly if it goes down.</p>
-                <a href="https://app.checkbiolink.com" class="btn btn-primary">Start Free Trial</a>
+                <h3>Your Link Works Now. But What About Tonight?</h3>
+                <p>Broken links happen when you're asleep. Platform outages, expired domains, DNS issues—you won't know until customers tell you. Get 24/7 monitoring with instant alerts so you never lose another sale.</p>
+                <a href="https://app.checkbiolink.com" class="btn btn-primary">Start Free 14-Day Trial</a>
+                <p style="font-size: 0.85rem; margin-top: 0.75rem; color: var(--gray-600);">No credit card required to start</p>
             </div>
         </div>
     </section>
@@ -727,7 +743,7 @@
             btn.textContent = 'Checking...';
             
             try {
-                const response = await fetch('https://app.checkbiolink.com/api/check-link-now', {
+                const response = await fetch('/api/check-link-now', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ url })
