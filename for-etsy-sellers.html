@@ -85,6 +85,34 @@
             .hero-cta { flex-direction: column; }
             .nav-links { display: none; }
         }
+        .link-checker { max-width: 700px; margin: 0 auto 5rem; padding: 0 2rem; }
+        .checker-card { background: var(--gray-800); border: 1px solid var(--gray-700); border-radius: 12px; padding: 2.5rem; }
+        .checker-card h2 { font-size: 1.8rem; margin-bottom: 0.5rem; text-align: center; }
+        .checker-card p { color: var(--gray-400); text-align: center; margin-bottom: 2rem; font-size: 0.95rem; }
+        .checker-form { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .checker-input { flex: 1; padding: 0.875rem 1rem; background: var(--gray-900); border: 1px solid var(--gray-700); border-radius: 6px; color: var(--white); font-size: 0.95rem; }
+        .checker-input:focus { outline: none; border-color: var(--accent); }
+        .checker-input::placeholder { color: var(--gray-600); }
+        .btn-check { padding: 0.875rem 2rem; background: var(--accent); color: var(--white); border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .btn-check:hover:not(:disabled) { background: var(--accent-hover); }
+        .btn-check:disabled { opacity: 0.5; cursor: not-allowed; }
+        .checker-result { display: none; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; }
+        .checker-result.show { display: block; }
+        .result-up { background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); }
+        .result-down { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); }
+        .result-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
+        .result-up .result-title { color: #22c55e; }
+        .result-down .result-title { color: var(--red); }
+        .result-details { font-size: 0.9rem; color: var(--gray-200); line-height: 1.6; }
+        .result-details div { margin-bottom: 0.5rem; }
+        .checker-cta { text-align: center; padding: 1.5rem; background: var(--gray-900); border-radius: 8px; display: none; }
+        .checker-cta.show { display: block; }
+        .checker-cta h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }
+        .checker-cta p { color: var(--gray-400); font-size: 0.95rem; margin-bottom: 1.25rem; }
+        @media (max-width: 768px) {
+            .checker-form { flex-direction: column; }
+            .btn-check { width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -129,7 +157,7 @@
 
     <section style="padding: 0 2rem 5rem;">
         <div class="how-it-works">
-            <h2 class="section-title">How CheckBioLink Works</h2>
+            <h2 class="section-title">How our Etsy Shop Link Monitoring Safeguards Your Storefront</h2>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
@@ -150,6 +178,22 @@
         </div>
     </section>
 
+    <section class="link-checker">
+        <div class="checker-card">
+            <h2>Don't let a broken link send your customers to a competitor.</h2>
+            <p>Enter your Etsy shop or social bio link to verify your storefront is accessible to shoppers right now.</p>
+            <form class="checker-form" id="checkerForm" onsubmit="checkLink(event)">
+                <input type="url" class="checker-input" id="linkInput" placeholder="https://your-shop.etsy.com" required>
+                <button type="submit" class="btn-check" id="checkBtn">Check Link</button>
+            </form>
+            <div class="checker-result" id="checkerResult"></div>
+            <div class="checker-cta" id="checkerCTA">
+                <h3>Protect Every Shopper Click</h3>
+                <p>Etsy outages and link issues can happen anytime. Monitor your shop and traffic links 24/7 so revenue does not leak silently.</p>
+                <a href="https://app.checkbiolink.com" class="btn btn-primary">Start Free 14-Day Trial</a>
+            </div>
+        </div>
+    </section>
     <section class="pricing" id="pricing">
         <h2 class="section-title">Simple Pricing for Etsy Sellers</h2>
         <div class="pricing-grid">
@@ -210,5 +254,64 @@
         </p>
         <p style="margin-top: 0.5rem;">© 2026 CheckBioLink. Made by <a href="https://dahvio.com">Dahvio Studios</a></p>
     </footer>
+    <script>
+        async function checkLink(event) {
+            event.preventDefault();
+            const btn = document.getElementById('checkBtn');
+            const input = document.getElementById('linkInput');
+            const result = document.getElementById('checkerResult');
+            const cta = document.getElementById('checkerCTA');
+            const url = input.value.trim();
+
+            result.classList.remove('show');
+            cta.classList.remove('show');
+            btn.disabled = true;
+            btn.textContent = 'Checking...';
+
+            try {
+                const response = await fetch('https://app.checkbiolink.com/api/check-link-now', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url })
+                });
+                const data = await response.json();
+
+                if (data.is_up) {
+                    result.className = 'checker-result result-up show';
+                    result.innerHTML = `
+                        <div class="result-title">Your shop is open! But Etsy outages and link typos happen. We'll monitor your shop 24/7 so you can focus on making sales, not checking links.</div>
+                        <div class="result-details">
+                            <div><strong>Status:</strong> Online</div>
+                            <div><strong>Response Time:</strong> ${(data.response_time * 1000).toFixed(0)}ms</div>
+                            ${data.status_code ? `<div><strong>Status Code:</strong> ${data.status_code}</div>` : ''}
+                        </div>
+                    `;
+                } else {
+                    result.className = 'checker-result result-down show';
+                    result.innerHTML = `
+                        <div class="result-title">⚠️ Alert: Your Etsy shop is currently unreachable. Shoppers are moving on to the next result. Start your trial now to prevent silent revenue loss.</div>
+                        <div class="result-details">
+                            <div><strong>Error:</strong> ${data.error_message || 'Connection failed'}</div>
+                            ${data.status_code ? `<div><strong>Status Code:</strong> ${data.status_code}</div>` : ''}
+                        </div>
+                    `;
+                }
+                cta.classList.add('show');
+                gtag('event', 'link_check', {
+                    'event_category': 'Free Tool',
+                    'event_label': data.is_up ? 'Etsy Link Up' : 'Etsy Link Down'
+                });
+            } catch (error) {
+                result.className = 'checker-result result-down show';
+                result.innerHTML = `
+                    <div class="result-title">Error checking link</div>
+                    <div class="result-details"><div>Unable to check your link. Please try again.</div></div>
+                `;
+            }
+
+            btn.disabled = false;
+            btn.textContent = 'Check Link';
+        }
+    </script>
 </body>
 </html>
