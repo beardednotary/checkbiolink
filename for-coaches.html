@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uptime Monitoring for Coaches & Consultants | CheckBioLink</title>
+    <meta name="description" content="A broken booking link means missed clients and lost revenue. Monitor your Calendly, booking page, and website 24/7. Get instant alerts when something goes down. 14-day free trial.">
+    <link rel="icon" type="image/png" href="/CheckBioLink-logo.png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RNMYFMH2Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8RNMYFMH2Y');
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --black: #0a0a0a; --gray-900: #121212; --gray-800: #1a1a1a;
+            --gray-700: #2a2a2a; --gray-600: #3a3a3a; --gray-400: #888888;
+            --gray-200: #d4d4d4; --white: #ffffff; --accent: #3b82f6;
+            --accent-hover: #2563eb; --red: #ef4444;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--black); color: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        nav { padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--gray-800); position: sticky; top: 0; background: rgba(10,10,10,0.8); backdrop-filter: blur(10px); z-index: 1000; }
+        .logo { display: inline-flex; align-items: center; gap: 0.65rem; font-size: 1.5rem; font-weight: 700; color: var(--white); text-decoration: none; }
+        .logo img { width: 36px; height: 36px; object-fit: contain; border-radius: 6px; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--gray-200); text-decoration: none; font-size: 0.95rem; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: all 0.2s; border: none; cursor: pointer; display: inline-block; }
+        .btn-primary { background: var(--accent); color: var(--white); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+        .btn-secondary { background: transparent; color: var(--white); border: 1px solid var(--gray-600); }
+        .btn-secondary:hover { border-color: var(--gray-400); }
+        .hero { max-width: 900px; margin: 0 auto; padding: 5rem 2rem 3rem; text-align: center; }
+        .hero-label { display: inline-block; background: var(--gray-800); border: 1px solid var(--gray-700); color: var(--gray-400); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; margin-bottom: 1.5rem; }
+        .hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+        .hero .highlight { color: var(--accent); }
+        .hero p { font-size: 1.2rem; color: var(--gray-400); max-width: 600px; margin: 0 auto 2.5rem; }
+        .hero-cta { display: flex; gap: 1rem; justify-content: center; }
+        .hero-cta .btn { font-size: 1.05rem; padding: 1rem 2rem; }
+        .pain-points { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+        .section-title { text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 3rem; }
+        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .pain-card { background: var(--gray-900); border: 1px solid var(--gray-800); border-radius: 10px; padding: 2rem; }
+        .pain-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .pain-card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.75rem; }
+        .pain-card p { color: var(--gray-400); font-size: 0.95rem; line-height: 1.7; }
+        .how-it-works { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; background: var(--gray-900); border-radius: 12px; }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
+        .step { text-align: center; }
+        .step-number { width: 50px; height: 50px; background: var(--gray-800); border: 2px solid var(--gray-700); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.3rem; font-weight: 700; color: var(--accent); }
+        .step h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }
+        .step p { color: var(--gray-400); font-size: 0.95rem; }
+        .pricing { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .price-card { background: var(--gray-800); border: 1px solid var(--gray-700); border-radius: 12px; padding: 2rem; text-align: center; }
+        .price-card.featured { border-color: var(--accent); position: relative; }
+        .price-card.featured::before { content: 'POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+        .plan-name { font-size: 1rem; font-weight: 600; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+        .price { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.25rem; }
+        .price span { font-size: 1rem; color: var(--gray-400); font-weight: 400; }
+        .trial-note { color: var(--gray-400); font-size: 0.85rem; margin-bottom: 1.5rem; }
+        .features { list-style: none; margin: 1.5rem 0; text-align: left; }
+        .features li { padding: 0.5rem 0; color: var(--gray-200); font-size: 0.9rem; border-bottom: 1px solid var(--gray-700); }
+        .features li::before { content: '✓'; color: var(--accent); font-weight: 700; margin-right: 0.6rem; }
+        .also-for { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; text-align: center; border-top: 1px solid var(--gray-800); }
+        .also-for p { color: var(--gray-400); margin-bottom: 1.5rem; }
+        .also-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .also-links a { color: var(--gray-200); text-decoration: none; padding: 0.5rem 1.25rem; border: 1px solid var(--gray-700); border-radius: 20px; font-size: 0.9rem; transition: all 0.2s; }
+        .also-links a:hover { border-color: var(--accent); color: var(--accent); }
+        footer { border-top: 1px solid var(--gray-800); padding: 2rem; text-align: center; }
+        footer p { color: var(--gray-400); font-size: 0.85rem; }
+        footer a { color: var(--gray-400); text-decoration: none; margin: 0 0.75rem; }
+        footer a:hover { color: var(--gray-200); }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.2rem; } .hero-cta { flex-direction: column; } .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo"><img src="/CheckBioLink-logo.png" alt="CheckBioLink"><span>CheckBioLink</span></a>
+        <div class="nav-links">
+            <a href="/#pricing">Pricing</a>
+            <a href="https://app.checkbiolink.com" class="btn btn-primary">Start Free Trial</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-label">For Coaches &amp; Consultants</div>
+        <h1>A Broken Booking Link Means <span class="highlight">Missed Clients</span></h1>
+        <p>When your Calendly, scheduling page, or website goes down, potential clients bounce and book someone else. Monitor your critical links 24/7 and never miss a client because of a broken link again.</p>
+        <div class="hero-cta">
+            <a href="https://app.checkbiolink.com" class="btn btn-primary">Start Free 14-Day Trial</a>
+            <a href="/#how-it-works" class="btn btn-secondary">See How It Works</a>
+        </div>
+    </section>
+
+    <section class="pain-points">
+        <h2 class="section-title">How Broken Links Cost Coaches Clients</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <div class="pain-icon">📅</div>
+                <h3>Your Calendly Goes Down Mid-Campaign</h3>
+                <p>You run a webinar, podcast appearance, or email campaign. Warm leads click your booking link and hit an error. They don't try again. You never know how many clients you lost.</p>
+            </div>
+            <div class="pain-card">
+                <div class="pain-icon">🌐</div>
+                <h3>Your Website Goes Down Unnoticed</h3>
+                <p>Hosting issues, expired SSL certificates, domain renewal lapses—your site goes dark and you're the last to find out. Meanwhile referrals and ad traffic are hitting a broken page.</p>
+            </div>
+            <div class="pain-card">
+                <div class="pain-icon">📧</div>
+                <h3>Email Sequence Links Stop Working</h3>
+                <p>You send a nurture sequence to 2,000 subscribers. The link to your sales page breaks halfway through the send. Hundreds of warm prospects land nowhere.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 0 2rem 5rem;">
+        <div class="how-it-works">
+            <h2 class="section-title">How CheckBioLink Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Add Your Links</h3>
+                    <p>Paste your Calendly, website, sales page, and any other links you send prospects to. Takes two minutes.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>We Monitor Around the Clock</h3>
+                    <p>We check your links multiple times per day for errors, timeouts, and broken redirects.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Get Alerted Immediately</h3>
+                    <p>The moment something breaks you get a clear email with what went down, when it happened, and the error details.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <h2 class="section-title">Simple Pricing for Coaches</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <div class="plan-name">Starter</div>
+                <div class="price">$7<span>/mo</span></div>
+                <div class="trial-note">14-day free trial</div>
+                <ul class="features">
+                    <li>3 links monitored</li>
+                    <li>Check every 4 hours</li>
+                    <li>Email alerts</li>
+                    <li>30-day history</li>
+                </ul>
+                <a href="https://buy.stripe.com/dRmaEYbaB6Cxextdh8gfu00" class="btn btn-secondary" style="width:100%">Start Trial</a>
+            </div>
+            <div class="price-card featured">
+                <div class="plan-name">Pro</div>
+                <div class="price">$15<span>/mo</span></div>
+                <div class="trial-note">14-day free trial</div>
+                <ul class="features">
+                    <li>10 links monitored</li>
+                    <li>Check every 2 hours</li>
+                    <li>Email alerts</li>
+                    <li>90-day history</li>
+                </ul>
+                <a href="https://buy.stripe.com/14A5kE6Ul9OJahdgtkgfu01" class="btn btn-primary" style="width:100%">Start Trial</a>
+            </div>
+            <div class="price-card">
+                <div class="plan-name">Agency</div>
+                <div class="price">$29<span>/mo</span></div>
+                <div class="trial-note">14-day free trial</div>
+                <ul class="features">
+                    <li>50 links monitored</li>
+                    <li>Check every hour</li>
+                    <li>Email alerts</li>
+                    <li>1-year history</li>
+                </ul>
+                <a href="https://buy.stripe.com/4gM00k5Qh7GB4WTfpggfu02" class="btn btn-secondary" style="width:100%">Start Trial</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="also-for">
+        <p>CheckBioLink also works great for:</p>
+        <div class="also-links">
+            <a href="/for-etsy-sellers">Etsy Sellers</a>
+            <a href="/for-content-creators">Content Creators</a>
+            <a href="/for-shopify">Shopify Stores</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>
+            <a href="/">Home</a>
+            <a href="/terms">Terms</a>
+            <a href="/privacy">Privacy</a>
+            <a href="mailto:hello@checkbiolink.com">Contact</a>
+        </p>
+        <p style="margin-top: 0.5rem;">© 2026 CheckBioLink. Made by <a href="https://dahvio.com">Dahvio Studios</a></p>
+    </footer>
+</body>
+</html>
