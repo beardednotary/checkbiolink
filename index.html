@@ -511,24 +511,56 @@
             margin-right: 0.7rem;
         }
 
+        /* FOOTER */
         footer {
             border-top: 1px solid var(--gray-800);
             padding: 3rem 2rem;
-            text-align: center;
         }
 
-        footer p {
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-left p {
             color: var(--gray-400);
             font-size: 0.9rem;
         }
 
-        footer a {
+        .footer-left a {
             color: var(--gray-200);
             text-decoration: none;
         }
 
-        footer a:hover {
+        .footer-left a:hover {
             color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gray-200);
+        }
+
+        .footer-divider {
+            color: var(--gray-700);
         }
 
         @media (max-width: 768px) {
@@ -556,6 +588,11 @@
             .nav-links {
                 display: none;
             }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -574,6 +611,38 @@
         <div class="hero-cta">
             <a href="https://app.checkbiolink.com" class="btn btn-primary" onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'Hero Sign Up'})">Start Free Trial</a>
             <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+        </div>
+    </section>
+
+    <section class="ticker-section">
+        <div class="ticker-label">Works with all your platforms</div>
+        <div class="ticker-wrapper">
+            <div class="ticker">
+                <div class="ticker-item">Linktree</div>
+                <div class="ticker-item">Shopify</div>
+                <div class="ticker-item">Etsy</div>
+                <div class="ticker-item">Beacons</div>
+                <div class="ticker-item">Instagram</div>
+                <div class="ticker-item">WooCommerce</div>
+                <div class="ticker-item">Calendly</div>
+                <div class="ticker-item">Gumroad</div>
+                <div class="ticker-item">Squarespace</div>
+                <div class="ticker-item">WordPress</div>
+                <div class="ticker-item">TikTok</div>
+                <div class="ticker-item">YouTube</div>
+                <div class="ticker-item">Linktree</div>
+                <div class="ticker-item">Shopify</div>
+                <div class="ticker-item">Etsy</div>
+                <div class="ticker-item">Beacons</div>
+                <div class="ticker-item">Instagram</div>
+                <div class="ticker-item">WooCommerce</div>
+                <div class="ticker-item">Calendly</div>
+                <div class="ticker-item">Gumroad</div>
+                <div class="ticker-item">Squarespace</div>
+                <div class="ticker-item">WordPress</div>
+                <div class="ticker-item">TikTok</div>
+                <div class="ticker-item">YouTube</div>
+            </div>
         </div>
     </section>
 
@@ -616,38 +685,6 @@
                 <p>Broken links happen when you're asleep. Platform outages, expired domains, DNS issues—you won't know until customers tell you. Get 24/7 monitoring with instant alerts so you never lose another sale.</p>
                 <a href="https://app.checkbiolink.com" class="btn btn-primary">Start Free 14-Day Trial</a>
                 <p style="font-size: 0.85rem; margin-top: 0.75rem; color: var(--gray-600);">No credit card required to start</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="ticker-section">
-        <div class="ticker-label">Works with all your platforms</div>
-        <div class="ticker-wrapper">
-            <div class="ticker">
-                <div class="ticker-item">Linktree</div>
-                <div class="ticker-item">Shopify</div>
-                <div class="ticker-item">Etsy</div>
-                <div class="ticker-item">Beacons</div>
-                <div class="ticker-item">Instagram</div>
-                <div class="ticker-item">WooCommerce</div>
-                <div class="ticker-item">Calendly</div>
-                <div class="ticker-item">Gumroad</div>
-                <div class="ticker-item">Squarespace</div>
-                <div class="ticker-item">WordPress</div>
-                <div class="ticker-item">TikTok</div>
-                <div class="ticker-item">YouTube</div>
-                <div class="ticker-item">Linktree</div>
-                <div class="ticker-item">Shopify</div>
-                <div class="ticker-item">Etsy</div>
-                <div class="ticker-item">Beacons</div>
-                <div class="ticker-item">Instagram</div>
-                <div class="ticker-item">WooCommerce</div>
-                <div class="ticker-item">Calendly</div>
-                <div class="ticker-item">Gumroad</div>
-                <div class="ticker-item">Squarespace</div>
-                <div class="ticker-item">WordPress</div>
-                <div class="ticker-item">TikTok</div>
-                <div class="ticker-item">YouTube</div>
             </div>
         </div>
     </section>
@@ -718,12 +755,25 @@
                 <a href="https://buy.stripe.com/4gM00k5Qh7GB4WTfpggfu02" class="btn btn-secondary" style="width: 100%;">Start Trial</a>
             </div>
         </div>
-
     </section>
 
     <footer>
-        <p>Made with care by <a href="https://dahvio.com">Dahvio Studios</a></p>
-        <p style="margin-top: 0.5rem; font-size: 0.85rem;">© 2026 CheckBioLink. All rights reserved.</p>
+        <div class="footer-inner">
+            <div class="footer-left">
+                <p>Made with care by <a href="https://dahvio.com">Dahvio Studios</a></p>
+                <p style="margin-top: 0.25rem; font-size: 0.85rem;">© 2026 CheckBioLink. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="/for-etsy-sellers">Etsy Sellers</a>
+                <a href="/for-content-creators">Creators</a>
+                <a href="/for-coaches">Coaches</a>
+                <a href="/for-shopify">Shopify</a>
+                <span class="footer-divider">|</span>
+                <a href="/terms">Terms</a>
+                <a href="/privacy">Privacy</a>
+                <a href="mailto:hello@checkbiolink.com">Contact</a>
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -775,7 +825,6 @@
                 
                 cta.classList.add('show');
                 
-                // Track in GA
                 gtag('event', 'link_check', {
                     'event_category': 'Free Tool',
                     'event_label': data.is_up ? 'Link Up' : 'Link Down'
@@ -797,4 +846,3 @@
     </script>
 </body>
 </html>
-
