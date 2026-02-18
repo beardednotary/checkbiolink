@@ -63,7 +63,7 @@
         .trial-note { color: var(--gray-400); font-size: 0.85rem; margin-bottom: 1.5rem; }
         .features { list-style: none; margin: 1.5rem 0; text-align: left; }
         .features li { padding: 0.5rem 0; color: var(--gray-200); font-size: 0.9rem; border-bottom: 1px solid var(--gray-700); }
-        .features li::before { content: '✓'; color: var(--accent); font-weight: 700; margin-right: 0.6rem; }
+        .features li::before { content: 'âœ“'; color: var(--accent); font-weight: 700; margin-right: 0.6rem; }
         .also-for { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; text-align: center; border-top: 1px solid var(--gray-800); }
         .also-for p { color: var(--gray-400); margin-bottom: 1.5rem; }
         .also-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
@@ -128,17 +128,17 @@
         <h2 class="section-title">How Broken Links Cost Agents Deals</h2>
         <div class="pain-grid">
             <div class="pain-card">
-                <div class="pain-icon">🏡</div>
+                <div class="pain-icon">ðŸ¡</div>
                 <h3>Your MLS Links Expire Unnoticed</h3>
                 <p>You post a property on Instagram, Facebook, or in email blasts. The MLS link expires or the listing goes pending. Buyers keep clicking and getting dead ends while you're showing other properties.</p>
             </div>
             <div class="pain-card">
-                <div class="pain-icon">🌐</div>
+                <div class="pain-icon">ðŸŒ</div>
                 <h3>Your Agent Website Goes Down</h3>
                 <p>Hosting issues, expired SSL certificates, or platform updates break your site during peak buyer traffic hours. Referrals and Google searches land nowhere and you never know.</p>
             </div>
             <div class="pain-card">
-                <div class="pain-icon">📲</div>
+                <div class="pain-icon">ðŸ“²</div>
                 <h3>Social Bio Links Stop Working Mid-Campaign</h3>
                 <p>You run paid ads or boost posts driving traffic to your Linktree or bio link. A third-party outage or misconfiguration breaks the link. Ad spend goes to waste hitting error pages.</p>
             </div>
@@ -182,7 +182,7 @@
                 <p>Property pages and MLS links can fail without warning. Monitor every listing 24/7 and get notified immediately.</p>
                 <a href="https://app.checkbiolink.com" class="btn btn-primary">Start Free 14-Day Trial</a>
             </div>
-            <p class="revenue-risk">Revenue Risk Snapshot: At $X average deal value, even 2 hours of downtime could cost you $Y.</p>
+            <p class="revenue-risk">Revenue Risk Snapshot: At $8,000 average commission value, even 2 hours of downtime could cost you $8,000.</p>
         </div>
     </section>
     <section class="pricing" id="pricing">
@@ -244,7 +244,7 @@
             <a href="/privacy">Privacy</a>
             <a href="mailto:hello@checkbiolink.com">Contact</a>
         </p>
-        <p style="margin-top: 0.5rem;">© 2026 CheckBioLink. Made by <a href="https://dahvio.com">Dahvio Studios</a></p>
+        <p style="margin-top: 0.5rem;">Â© 2026 CheckBioLink. Made by <a href="https://dahvio.com">Dahvio Studios</a></p>
     </footer>
     <script>
         async function checkLink(event) {
@@ -281,7 +281,7 @@
                 } else {
                     result.className = 'checker-result result-down show';
                     result.innerHTML = `
-                        <div class="result-title">⚠️ Alert: Your listing link is unreachable. Buyers are moving on to the next agent. Start your trial to stay notified the second a property link goes dark.</div>
+                        <div class="result-title">âš ï¸ Alert: Your listing link is unreachable. Buyers are moving on to the next agent. Start your trial to stay notified the second a property link goes dark.</div>
                         <div class="result-details">
                             <div><strong>Error:</strong> ${data.error_message || 'Connection failed'}</div>
                             ${data.status_code ? `<div><strong>Status Code:</strong> ${data.status_code}</div>` : ''}
@@ -307,3 +307,4 @@
     </script>
 </body>
 </html>
+
