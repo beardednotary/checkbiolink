@@ -63,7 +63,7 @@
         .trial-note { color: var(--gray-400); font-size: 0.85rem; margin-bottom: 1.5rem; }
         .features { list-style: none; margin: 1.5rem 0; text-align: left; }
         .features li { padding: 0.5rem 0; color: var(--gray-200); font-size: 0.9rem; border-bottom: 1px solid var(--gray-700); }
-        .features li::before { content: 'âœ“'; color: var(--accent); font-weight: 700; margin-right: 0.6rem; }
+        .features li::before { content: '✓'; color: var(--accent); font-weight: 700; margin-right: 0.6rem; }
         .also-for { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; text-align: center; border-top: 1px solid var(--gray-800); }
         .also-for p { color: var(--gray-400); margin-bottom: 1.5rem; }
         .also-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
@@ -128,17 +128,17 @@
         <h2 class="section-title">How Broken Links Cost Freelancers Clients</h2>
         <div class="pain-grid">
             <div class="pain-card">
-                <div class="pain-icon">ðŸ’¼</div>
+                <div class="pain-icon">💼</div>
                 <h3>Your Portfolio Site Goes Down During Outreach</h3>
                 <p>You pitch prospects, apply to jobs on Upwork, or send cold emails. Your portfolio link is broken and you don't know. Clients click through and hit error pages. Your response rate tanks and you have no idea why.</p>
             </div>
             <div class="pain-card">
-                <div class="pain-icon">ðŸ“…</div>
+                <div class="pain-icon">📅</div>
                 <h3>Booking Links Break When Leads Are Hot</h3>
                 <p>A warm lead wants to schedule a discovery call. Your Calendly or booking page is down because of a third-party issue. They can't book and move on. You lose the deal before you even know there was interest.</p>
             </div>
             <div class="pain-card">
-                <div class="pain-icon">ðŸŒ</div>
+                <div class="pain-icon">🌐</div>
                 <h3>Hosting or SSL Issues Take Your Site Offline</h3>
                 <p>Server problems, expired certificates, or DNS configuration errors break your site overnight. Referrals and LinkedIn traffic land nowhere. By the time someone tells you it's been down for days.</p>
             </div>
@@ -245,7 +245,7 @@
             <a href="/privacy">Privacy</a>
             <a href="mailto:hello@checkbiolink.com">Contact</a>
         </p>
-        <p style="margin-top: 0.5rem;">Â© 2026 CheckBioLink. Made by <a href="https://dahvio.com">Dahvio Studios</a></p>
+        <p style="margin-top: 0.5rem;">© 2026 CheckBioLink. Made by <a href="https://dahvio.com">Dahvio Studios</a></p>
     </footer>
     <script>
         async function checkLink(event) {
@@ -282,7 +282,7 @@
                 } else {
                     result.className = 'checker-result result-down show';
                     result.innerHTML = `
-                        <div class="result-title">âš ï¸ Alert: Your link is unreachable. Your pitches are hitting a dead end. Start your trial now to ensure your outreach always leads to a live site.</div>
+                        <div class="result-title">⚠️ Alert: Your link is unreachable. Your pitches are hitting a dead end. Start your trial now to ensure your outreach always leads to a live site.</div>
                         <div class="result-details">
                             <div><strong>Error:</strong> ${data.error_message || 'Connection failed'}</div>
                             ${data.status_code ? `<div><strong>Status Code:</strong> ${data.status_code}</div>` : ''}
