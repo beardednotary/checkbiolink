@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is Your Bio Link Shadow-Banned? How to Detect Platform Blocks | CheckBioLink Blog</title>
+    <meta name="description" content="Your bio link works perfectly when you test it in Chrome.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://checkbiolink.com/blog/is-your-bio-link-shadow-banned.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Is Your Bio Link Shadow-Banned? How to Detect Platform Blocks">
+    <meta property="og:description" content="Your bio link works perfectly when you test it in Chrome.">
+    <meta property="og:url" content="https://checkbiolink.com/blog/is-your-bio-link-shadow-banned.html">
+    <meta property="og:image" content="https://checkbiolink.com/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Is Your Bio Link Shadow-Banned? How to Detect Platform Blocks">
+    <meta name="twitter:description" content="Your bio link works perfectly when you test it in Chrome.">
+    <meta name="twitter:image" content="https://checkbiolink.com/og.png">
+    <meta name="author" content="Ray Rothwell">
+    <link rel="icon" type="image/png" href="../CheckBioLink-logo.png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RNMYFMH2Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8RNMYFMH2Y');
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --black: #0a0a0a;
+            --gray-900: #121212;
+            --gray-800: #1a1a1a;
+            --gray-700: #2a2a2a;
+            --gray-600: #3a3a3a;
+            --gray-400: #888888;
+            --gray-300: #b0b0b0;
+            --gray-200: #d4d4d4;
+            --white: #ffffff;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --red: #ef4444;
+            --green: #22c55e;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        nav {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--gray-800);
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.88);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        .logo { display: inline-flex; align-items: center; gap: 0.65rem; font-size: 1.35rem; font-weight: 700; color: var(--white); text-decoration: none; }
+        .logo img { width: 34px; height: 34px; object-fit: contain; border-radius: 6px; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-links a { color: var(--gray-200); text-decoration: none; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--white); }
+        .btn { padding: 0.65rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: all 0.2s; border: none; cursor: pointer; display: inline-block; }
+        .btn-primary { background: var(--accent); color: var(--white); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+        .container { max-width: 920px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+        .post-header { margin-bottom: 2rem; }
+        .kicker { color: var(--gray-400); font-size: 0.95rem; margin-bottom: 0.8rem; }
+        .post-header h1 { font-size: clamp(2rem, 4.4vw, 3rem); line-height: 1.15; margin-bottom: 1rem; letter-spacing: -0.02em; }
+        .post-header .meta { color: var(--gray-400); font-size: 0.95rem; }
+
+        .post { background: var(--gray-900); border: 1px solid var(--gray-800); border-radius: 12px; padding: 2rem; }
+        .post h2 { font-size: 1.75rem; margin: 2.25rem 0 1rem; line-height: 1.25; }
+        .post h3 { font-size: 1.25rem; margin: 1.75rem 0 0.75rem; }
+        .post p { color: var(--gray-200); margin-bottom: 1rem; }
+        .post ul, .post ol { padding-left: 1.25rem; margin: 0.6rem 0 1rem; }
+        .post li { margin-bottom: 0.45rem; color: var(--gray-200); }
+        .post a { color: #60a5fa; }
+        .post a:hover { color: #93c5fd; }
+        .post hr { border: 0; border-top: 1px solid var(--gray-700); margin: 1.8rem 0; }
+        .table-wrap { overflow-x: auto; margin: 1rem 0; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: 0.65rem; border: 1px solid var(--gray-700); }
+        th { background: var(--gray-800); }
+
+        .link-checker { max-width: 920px; margin: 2.5rem auto 0; padding: 0 1.25rem; }
+        .checker-card { background: var(--gray-800); border: 1px solid var(--gray-700); border-radius: 12px; padding: 2rem; }
+        .checker-card h2 { font-size: 1.65rem; margin-bottom: 0.5rem; text-align: center; }
+        .checker-card p { color: var(--gray-400); text-align: center; margin-bottom: 1.4rem; font-size: 0.95rem; }
+        .checker-form { display: flex; gap: 0.75rem; margin-bottom: 1.2rem; }
+        .checker-input { flex: 1; padding: 0.875rem 1rem; background: var(--gray-900); border: 1px solid var(--gray-700); border-radius: 6px; color: var(--white); font-size: 0.95rem; }
+        .checker-input:focus { outline: none; border-color: var(--accent); }
+        .btn-check { padding: 0.875rem 1.5rem; background: var(--accent); color: var(--white); border: none; border-radius: 6px; font-weight: 600; cursor: pointer; }
+        .btn-check:disabled { opacity: 0.6; cursor: not-allowed; }
+        .checker-result { display: none; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
+        .checker-result.show { display: block; }
+        .result-up { background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); }
+        .result-down { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); }
+        .result-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.55rem; }
+        .result-up .result-title { color: var(--green); }
+        .result-down .result-title { color: var(--red); }
+        .result-details { font-size: 0.9rem; color: var(--gray-300); line-height: 1.6; }
+        .checker-cta { text-align: center; padding: 1.2rem; background: var(--gray-900); border-radius: 8px; display: none; }
+        .checker-cta.show { display: block; }
+        .checker-cta h3 { font-size: 1.1rem; margin-bottom: 0.6rem; }
+
+        footer { border-top: 1px solid var(--gray-800); padding: 2rem; margin-top: 3rem; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+        .footer-left p { color: var(--gray-400); font-size: 0.9rem; }
+        .footer-left a { color: var(--gray-200); }
+        .footer-links { display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; }
+        .footer-links a { color: var(--gray-400); text-decoration: none; font-size: 0.85rem; }
+        .footer-links a:hover { color: var(--white); }
+        .footer-divider { color: var(--gray-600); }
+
+        .blog-list { max-width: 920px; margin: 2rem auto; padding: 0 1.25rem; }
+        .blog-list h1 { font-size: clamp(2rem, 4.5vw, 2.8rem); margin-bottom: 0.8rem; }
+        .blog-list .intro { color: var(--gray-400); margin-bottom: 1.5rem; }
+        .post-list { display: grid; gap: 0.9rem; }
+        .post-card { background: var(--gray-900); border: 1px solid var(--gray-800); border-radius: 10px; padding: 1.1rem 1.2rem; }
+        .post-card a { color: var(--white); text-decoration: none; }
+        .post-card h2 { font-size: 1.2rem; margin-bottom: 0.4rem; }
+        .post-card p { color: var(--gray-400); font-size: 0.92rem; }
+
+        @media (max-width: 760px) {
+            nav { padding: 1rem; }
+            .nav-links a:not(.btn) { display: none; }
+            .post { padding: 1.15rem; }
+            .checker-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo"><img src="../CheckBioLink-logo.png" alt="CheckBioLink logo"><span>CheckBioLink</span></a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="https://app.checkbiolink.com" class="btn btn-primary">Start Free Trial</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="post-header">
+            <div class="kicker">CheckBioLink Blog</div>
+            <h1>Is Your Bio Link Shadow-Banned? How to Detect Platform Blocks</h1>
+            <div class="meta">Last updated: February 2026</div>
+        </header>
+        <article class="post">
+<p>Your bio link works perfectly when you test it in Chrome.</p>
+<p>But when your followers click it inside Instagram or TikTok? &quot;Link Not Allowed&quot; or a blank page.</p>
+<p>You&#39;re not getting traffic. You&#39;re not getting sales. And you have no idea why.</p>
+<p>Welcome to the world of <strong>platform-specific link blocking</strong> (aka &quot;shadow-banned links&quot;).</p>
+<p>Here&#39;s how to detect it, fix it, and prevent it from happening again.</p>
+<hr>
+<h2>What is a Shadow-Banned Bio Link?</h2>
+<p>A <strong>shadow-banned link</strong> is a URL that:</p>
+<ul>
+<li> Works fine in a web browser (Chrome, Safari, Firefox)</li>
+<li> Gets blocked or flagged inside social media apps (Instagram, TikTok, Facebook)</li>
+</ul>
+<p><strong>The result:</strong> Your followers click your bio link and see:</p>
+<ul>
+<li>&quot;Link Not Allowed&quot;</li>
+<li>&quot;This link may be unsafe&quot;</li>
+<li>A blank page (link just doesn&#39;t load)</li>
+<li>A warning screen they have to click through</li>
+</ul>
+<p>Most people don&#39;t click through warnings. They bounce. You lose the click.</p>
+<hr>
+<h2>Why Do Instagram and TikTok Block Bio Links?</h2>
+<p>Social platforms are protecting their users (and their ad revenue). They block links that:</p>
+<h3>1. <strong>Use Certain URL Shorteners</strong></h3>
+<p>Platforms like Instagram and TikTok blacklist some URL shorteners because scammers use them.</p>
+<p><strong>Commonly blocked:</strong></p>
+<ul>
+<li>bit.ly (sometimes)</li>
+<li>tinyurl.com</li>
+<li>Some custom shorteners</li>
+<li>Redirect services</li>
+</ul>
+<p><strong>What works better:</strong></p>
+<ul>
+<li>Linktree (usually allowed, but not always)</li>
+<li>Beacons</li>
+<li>Direct links to your actual site</li>
+<li>Custom domain redirects</li>
+</ul>
+<hr>
+<h3>2. <strong>Point to Adult Content</strong></h3>
+<p>Instagram and TikTok have strict content policies. If your link points to:</p>
+<ul>
+<li>OnlyFans</li>
+<li>Adult content sites</li>
+<li>Gambling sites</li>
+<li>Cryptocurrency/NFT sales pages (sometimes flagged)</li>
+</ul>
+<p>...your link may get shadow-banned without warning.</p>
+<hr>
+<h3>3. <strong>Contain Affiliate Links</strong></h3>
+<p>Some platforms block or throttle affiliate links (Amazon Associates, ClickBank, etc.) especially if they:</p>
+<ul>
+<li>Use known affiliate tracking parameters (<code>?tag=</code>, <code>?ref=</code>, etc.)</li>
+<li>Redirect through affiliate networks</li>
+</ul>
+<p><strong>Workaround:</strong> Use a link aggregator like Linktree or Beacons to &quot;clean&quot; the URL.</p>
+<hr>
+<h3>4. <strong>Were Reported as Spam</strong></h3>
+<p>If enough people report your link as spam (competitors, trolls, accidental reports), platforms may auto-flag it.</p>
+<p><strong>Result:</strong> Your link gets shadow-banned even if it&#39;s completely legit.</p>
+<hr>
+<h3>5. <strong>Use Suspicious Domains</strong></h3>
+<p>Newly registered domains, certain TLDs (.xyz, .top, .cc), or domains that look like phishing attempts can trigger automatic blocks.</p>
+<hr>
+<h2>How to Detect if Your Link is Shadow-Banned</h2>
+<h3>Test 1: Browser vs. In-App</h3>
+<ol>
+<li>Copy your bio link</li>
+<li>Open it in <strong>Chrome or Safari</strong> (works fine, right?)</li>
+<li>Now open <strong>Instagram or TikTok app</strong></li>
+<li>Click your bio link from <strong>inside the app</strong></li>
+<li>Does it load? Or do you see a warning/blank page?</li>
+</ol>
+<p><strong>If it works in browser but NOT in-app</strong> = shadow-banned.</p>
+<hr>
+<h3>Test 2: Ask a Friend</h3>
+<p>Your own app might cache your link or treat you differently because you&#39;re the account owner.</p>
+<p><strong>Better test:</strong></p>
+<ol>
+<li>Ask a friend (or create a burner account)</li>
+<li>Have them click your bio link from their Instagram/TikTok feed</li>
+<li>See what they see</li>
+</ol>
+<hr>
+<h3>Test 3: Check Platform-Specific Errors</h3>
+<p><strong>Instagram:</strong></p>
+<ul>
+<li>&quot;Link Not Allowed&quot;</li>
+<li>&quot;This link may be harmful&quot;</li>
+<li>Blank white page</li>
+</ul>
+<p><strong>TikTok:</strong></p>
+<ul>
+<li>&quot;This link cannot be opened&quot;</li>
+<li>&quot;This link is not available&quot;</li>
+<li>Redirect to TikTok&#39;s safety page</li>
+</ul>
+<hr>
+<h2>How to Fix a Shadow-Banned Link</h2>
+<h3>Option 1: Change Your Link</h3>
+<p>If your link is blocked, switch to a different URL:</p>
+<ul>
+<li>Use a different URL shortener</li>
+<li>Use a link aggregator (Linktree, Beacons, Stan Store)</li>
+<li>Link directly to your website instead of a redirect</li>
+</ul>
+<p><strong>Test the new link</strong> before updating your bio.</p>
+<hr>
+<h3>Option 2: Use a Custom Domain</h3>
+<p>Instead of:</p>
+<p><code>linktr.ee/yourname</code></p>
+<p>Use:</p>
+<p><code>links.yourdomain.com</code></p>
+<p>Custom domains are less likely to get flagged because they look more legitimate.</p>
+<p><strong>How to set this up:</strong></p>
+<ul>
+<li>Buy a domain (Namecheap, Google Domains)</li>
+<li>Point a subdomain to your Linktree/Beacons account</li>
+<li>Use that custom URL in your bio</li>
+</ul>
+<hr>
+<h3>Option 3: Appeal (Good Luck)</h3>
+<p>Instagram and TikTok don&#39;t have great support for this, but you can try:</p>
+<p><strong>Instagram:</strong></p>
+<ul>
+<li>Go to Settings  Help  Report a Problem</li>
+<li>Explain your link is being incorrectly blocked</li>
+</ul>
+<p><strong>TikTok:</strong></p>
+<ul>
+<li>In-app: Profile  3 dots  Report a Problem</li>
+<li>Select &quot;Account Issue&quot; and explain</li>
+</ul>
+<p><strong>Reality:</strong> This rarely works. Platforms don&#39;t manually review every blocked link.</p>
+<p><strong>Better solution:</strong> Just use a different URL.</p>
+<hr>
+<h2>How to Prevent Your Link From Getting Shadow-Banned</h2>
+<h3>1. <strong>Avoid Suspicious URL Shorteners</strong></h3>
+<p>Use trusted services:</p>
+<ul>
+<li> Linktree</li>
+<li> Beacons</li>
+<li> Direct links to your site</li>
+<li> Random URL shorteners</li>
+</ul>
+<hr>
+<h3>2. <strong>Don&#39;t Use Flagged Keywords in Your Link</strong></h3>
+<p>Avoid putting these in your URL path:</p>
+<ul>
+<li>&quot;free&quot;</li>
+<li>&quot;winner&quot;</li>
+<li>&quot;click here&quot;</li>
+<li>&quot;buy now&quot;</li>
+<li>Excessive numbers</li>
+</ul>
+<p>Example:</p>
+<p> <code>yoursite.com/free-giveaway-winner-2024-click-here</code></p>
+<p> <code>yoursite.com/giveaway</code></p>
+<hr>
+<h3>3. <strong>Monitor Your Link Regularly</strong></h3>
+<p>Just because your link works today doesn&#39;t mean it&#39;ll work tomorrow. Platforms update their blacklists constantly.</p>
+<p><strong>Solution:</strong> Use automated monitoring to check if your link is accessible.</p>
+<p><strong>CheckBioLink</strong> tests your bio link from multiple angles:</p>
+<ul>
+<li>Web browser check (standard uptime)</li>
+<li>Platform-specific checks (detects in-app blocks)</li>
+<li>Instant alerts if your link gets flagged or blocked</li>
+</ul>
+<p><strong>If Instagram/TikTok blocks your link:</strong></p>
+<ol>
+<li>You get an email immediately</li>
+<li>You can switch to a backup link before losing traffic</li>
+<li>No more &quot;why is my engagement down?&quot; mystery</li>
+</ol>
+<p><a href="https://app.checkbiolink.com" target="_blank" rel="noopener"><strong>Monitor Your Bio Link </strong></a></p>
+<hr>
+<h2>Test Your Bio Link Right Now (Free)</h2>
+<p>Is your link actually working inside social apps?</p>
+<p><strong><a href="https://checkbiolink.com" target="_blank" rel="noopener"> Free Link Checker - Test Your Link in Seconds</a></strong></p>
+<p>Enter your bio link and see if it&#39;s being blocked. No signup required.</p>
+<hr>
+<h2>Platform-Specific Shadow Ban Detection</h2>
+<h3>Instagram-Specific Blocks</h3>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Link works in browser</li>
+<li>Blank page in Instagram app</li>
+<li>No error message, just doesn&#39;t load</li>
+</ul>
+<p><strong>Likely cause:</strong></p>
+<ul>
+<li>URL shortener blacklist</li>
+<li>Domain flagged as spam</li>
+<li>Affiliate link detected</li>
+</ul>
+<p><strong>Fix:</strong> Use Linktree/Beacons or a custom domain.</p>
+<hr>
+<h3>TikTok-Specific Blocks</h3>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>&quot;This link cannot be opened&quot;</li>
+<li>Redirect to TikTok safety page</li>
+<li>Link works everywhere else</li>
+</ul>
+<p><strong>Likely cause:</strong></p>
+<ul>
+<li>Recently registered domain</li>
+<li>Flagged TLD (.xyz, .top)</li>
+<li>Reported as spam</li>
+</ul>
+<p><strong>Fix:</strong> Use a well-established domain or link aggregator.</p>
+<hr>
+<h2>The &quot;Link in Bio&quot; Workaround</h2>
+<p>If your link keeps getting blocked, try the &quot;swipe up&quot; or &quot;link sticker&quot; features:</p>
+<p><strong>Instagram Stories:</strong> Use the link sticker (requires 10K followers or verified account)</p>
+<p><strong>TikTok Videos:</strong> Add a clickable link in your video (if you have access)</p>
+<p>These in-app features are less likely to get blocked than bio links.</p>
+<hr>
+<h2>FAQs</h2>
+<p><strong>Q: Can I tell if my link is shadow-banned before posting it?</strong></p>
+<p>A: Test it yourself by clicking it from a burner account in the app. Or use CheckBioLink to monitor it continuously.</p>
+<p><strong>Q: Will changing my link hurt my SEO?</strong></p>
+<p>A: No. Your Instagram/TikTok bio link doesn&#39;t affect SEO. Your website&#39;s SEO is separate.</p>
+<p><strong>Q: What if my link gets blocked mid-campaign?</strong></p>
+<p>A: You&#39;ll lose traffic until you notice and fix it. This is why automated monitoring is critical.</p>
+<p><strong>Q: Can CheckBioLink detect shadow bans?</strong></p>
+<p>A: Yes. We check if your link is accessible from multiple sources, including in-app contexts.</p>
+<hr>
+<h2>Shadow Bans Kill Revenue Silently</h2>
+<p>You&#39;re posting content. Driving traffic. Telling people to &quot;link in bio.&quot;</p>
+<p>But if your link is blocked, <strong>none of that traffic converts.</strong></p>
+<p>You won&#39;t know until:</p>
+<ul>
+<li>Someone DMs you</li>
+<li>Your sales mysteriously drop</li>
+<li>You manually test it yourself</li>
+</ul>
+<p>By then, you&#39;ve already lost hundreds (or thousands) of clicks.</p>
+<hr>
+<h2>Monitor Your Bio Link 24/7</h2>
+<p><strong>CheckBioLink</strong> checks your bio link multiple times per day and alerts you instantly if:</p>
+<ul>
+<li> Your link stops loading</li>
+<li> Your link gets flagged by a platform</li>
+<li> Your domain expires or DNS breaks</li>
+<li> Your redirect service goes down</li>
+</ul>
+<p><strong>Pricing:</strong> $7/month to monitor 3 links. Less than one lost sale.</p>
+<p><a href="https://app.checkbiolink.com" target="_blank" rel="noopener"><strong>Start Free 14-Day Trial </strong></a></p>
+<hr>
+<p><strong>Bottom Line:</strong> Bio link shadow bans are silent killers. Monitor your links before you lose traffic.</p>
+<p><a href="https://checkbiolink.com" target="_blank" rel="noopener"><strong>Test Your Link for Free </strong></a></p>
+<hr>
+<p><em>Written by Ray Rothwell, founder of CheckBioLink</em></p>
+
+        </article>
+    </main>
+
+    <section class="link-checker">
+        <div class="checker-card">
+            <h2>Free Broken Link Checker</h2>
+            <p>Test your link in seconds and confirm customers can reach your page. Then monitor it 24/7 so you catch issues before they cost you traffic or revenue.</p>
+            <form class="checker-form" id="checkerForm" onsubmit="checkLink(event)">
+                <input type="url" class="checker-input" id="linkInput" placeholder="https://your-link.com" required>
+                <button type="submit" class="btn-check" id="checkBtn">Check Link</button>
+            </form>
+            <div class="checker-result" id="checkerResult"></div>
+            <div class="checker-cta" id="checkerCTA">
+                <h3>Want alerts when this link breaks later?</h3>
+                <p>CheckBioLink monitors your key URLs all day and sends instant email alerts when a link goes down.</p>
+                <a href="https://app.checkbiolink.com" class="btn btn-primary">Start Free 14-Day Trial</a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-left">
+                <p>Made with care by <a href="https://dahvio.com">Dahvio Studios</a></p>
+                <p style="margin-top: 0.25rem; font-size: 0.85rem;">(c) 2026 CheckBioLink. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="/for-etsy-sellers">Etsy Sellers</a>
+                <a href="/for-content-creators">Creators</a>
+                <a href="/for-coaches">Coaches</a>
+                <a href="/for-shopify">Shopify</a>
+                <a href="/for-affiliate-marketers">Affiliate Marketers</a>
+                <a href="/for-real-estate-agents">Real Estate Agents</a>
+                <a href="/for-photographers">Photographers</a>
+                <a href="/for-freelancers">Freelancers</a>
+                <span class="footer-divider">|</span>
+                <a href="/blog/">Blog</a>
+                <a href="/terms">Terms</a>
+                <a href="/privacy">Privacy</a>
+                <a href="mailto:hello@checkbiolink.com">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        async function checkLink(event) {
+            event.preventDefault();
+            const btn = document.getElementById('checkBtn');
+            const input = document.getElementById('linkInput');
+            const result = document.getElementById('checkerResult');
+            const cta = document.getElementById('checkerCTA');
+            const url = input.value.trim();
+
+            result.classList.remove('show');
+            cta.classList.remove('show');
+            btn.disabled = true;
+            btn.textContent = 'Checking...';
+
+            try {
+                const response = await fetch('https://app.checkbiolink.com/api/check-link-now', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url })
+                });
+                const data = await response.json();
+
+                if (data.is_up) {
+                    result.className = 'checker-result result-up show';
+                    result.innerHTML = `
+                        <div class="result-title">Your link is working.</div>
+                        <div class="result-details">
+                            <div><strong>Status:</strong> Online</div>
+                            <div><strong>Response Time:</strong> ${(data.response_time * 1000).toFixed(0)}ms</div>
+                            ${data.status_code ? `<div><strong>Status Code:</strong> ${data.status_code}</div>` : ''}
+                        </div>
+                    `;
+                    cta.classList.add('show');
+                } else {
+                    result.className = 'checker-result result-down show';
+                    result.innerHTML = `
+                        <div class="result-title">Your link appears down.</div>
+                        <div class="result-details">
+                            <div><strong>Error:</strong> ${data.error || 'Unable to reach this URL'}</div>
+                            ${data.status_code ? `<div><strong>Status Code:</strong> ${data.status_code}</div>` : ''}
+                        </div>
+                    `;
+                    cta.classList.add('show');
+                }
+
+                gtag('event', 'link_check', {
+                    event_category: 'Free Tool',
+                    event_label: url,
+                    value: data.is_up ? 1 : 0
+                });
+            } catch (error) {
+                result.className = 'checker-result result-down show';
+                result.innerHTML = `
+                    <div class="result-title">Check failed.</div>
+                    <div class="result-details">Please try again in a minute.</div>
+                `;
+                cta.classList.add('show');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Check Link';
+            }
+        }
+    </script>
+</body>
+</html>
